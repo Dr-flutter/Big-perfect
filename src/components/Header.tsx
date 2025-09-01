@@ -4,6 +4,7 @@ import { Menu, X, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
+
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
@@ -57,10 +58,10 @@ const Header = () => {
               <div className="w-12 h-12  rounded-lg flex items-center justify-center">
               
                 <img 
-                  src="/src/assets/logo.jpg" 
-                  alt="Big Perfect Logo" 
-                  className="w-12 h-12 object-contain"
-                />
+  src="/logo.jpg" 
+  alt="Big Perfect Logo" 
+  className="w-12 h-12 object-contain"
+/>
               </div>
               <div>
                 <div className="text-2xl font-bold text-foreground">Big Perfect</div>
