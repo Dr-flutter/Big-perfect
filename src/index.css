@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Big Perfect BTP - Design System
+All colors MUST be HSL.
+Charte graphique: Bleu violet (#4B4BB8), Doré métallique (#D4AF37), Anthracite (#222222)
+*/
+
+@layer base {
+  :root {
+    /* Brand Colors */
+    /* Brand Colors */
+    --brand-violet: 240 43% 52%;        /* #4B4BB8 */
+    --brand-gold: 48 69% 53%;           /* #D4AF37 */
+    --brand-anthracite: 0 0% 13%;       /* #222222 */
+    --brand-white: 0 0% 100%;           /* #FFFFFF */
+    --brand-gray-light: 0 0% 88%;       /* #E0E0E0 */
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--brand-violet)), hsl(240, 72%, 17%));
+    --gradient-gold: linear-gradient(135deg, hsl(var(--brand-gold)), hsl(48 80% 60%));
+    --gradient-violet: linear-gradient(135deg, hsl(var(--brand-violet)), hsl(240, 37%, 19%));
+    --gradient-overlay: linear-gradient(180deg, rgba(75, 75, 184, 0.8), rgba(212, 175, 55, 0.6));
+    
+    
+    /* Shadows */
+    --shadow-gold: 0 10px 30px -10px hsl(var(--brand-gold) / 0.3);
+    --shadow-violet: 0 10px 30px -10px hsl(var(--brand-violet) / 0.3);
+    --shadow-elegant: 0 20px 60px -20px hsl(var(--brand-anthracite) / 0.4);
+    
+    /* System Colors - 50% Gris, 40% Violet, 10% Or */
+    --background: 0 0% 97%;
+    --foreground: var(--brand-anthracite);
+
+    --primary: var(--brand-anthracite);
+    --primary-foreground: var(--brand-white);
+
+    --secondary: 0 0% 88%;
+    --secondary-foreground: var(--brand-anthracite);
+
+    --accent: var(--brand-violet);
+    --accent-foreground: var(--brand-white);
+
+    --muted: 0 0% 93%;
+    --muted-foreground: 0 0% 55%;
+    
+    --card: var(--brand-white);
+    --card-foreground: var(--brand-anthracite);
+    
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: var(--brand-violet);
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: var(--brand-white);
+    
+    --radius: 0.75rem;
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-roboto;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-montserrat font-semibold;
+  }
+}
+
+@layer components {
+  /* Hero Button Variant - Violet accent (40%) */
+  .btn-hero {
+    @apply bg-accent text-accent-foreground px-8 py-4 rounded-lg font-semibold text-lg;
+    @apply hover:opacity-90;
+    @apply transform hover:scale-105 active:scale-95;
+    @apply shadow-lg hover:shadow-xl;
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-violet);
+  }
+  
+  .btn-hero:hover {
+    box-shadow: var(--shadow-violet);
+  }
+  
+  /* Gold Button Variant - Or accent (10%) */
+  .btn-gold {
+    @apply bg-secondary text-secondary-foreground px-6 py-3 rounded-lg font-medium border border-border;
+    @apply hover:bg-primary hover:text-primary-foreground;
+    @apply transform hover:scale-105 active:scale-95;
+    transition: var(--transition-smooth);
+  }
+  
+  .btn-gold:hover {
+    box-shadow: var(--shadow-elegant);
+  }
+  
+  /* Section Padding */
+  .section-padding {
+    @apply px-4 md:px-8 lg:px-12 xl:px-16;
+  }
+  
+  /* Container Max Width */
+  .container-custom {
+    @apply max-w-7xl mx-auto section-padding;
+  }
+  
+  /* Text Gradients */
+  .text-gradient-hero {
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-gradient-gold {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Hover Effects */
+  .hover-lift {
+    @apply transform hover:-translate-y-2 hover:shadow-xl;
+    transition: var(--transition-smooth);
+  }
+  
+  .hover-glow {
+    @apply hover:shadow-lg;
+    transition: var(--transition-smooth);
+  }
+  
+  .hover-glow:hover {
+    box-shadow: var(--shadow-elegant);
+  }
+  
+  /* Background Patterns */
+  .bg-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .bg-gold {
+    background: var(--gradient-gold);
+  }
+  
+  .bg-violet {
+    background: var(--gradient-violet);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+/* Ajoute dans ton fichier CSS global ou tailwind.config.js */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.animate-blink {
+  animation: blink 1s steps(2, start) infinite;
+}
